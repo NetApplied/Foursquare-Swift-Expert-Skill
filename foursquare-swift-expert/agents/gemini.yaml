@@ -5,8 +5,8 @@ skill:
   instructions_source: "../SKILL.md"
   references_path: "../references"
 interface:
-  display_name: "Foursquare Swift Docs"
+  display_name: "Foursquare Swift Expert"
   short_description: "Swift integration patterns for Foursquare Places API"
 prompts:
   default_user_prompt: "Use foursquare-swift-expert to implement or debug a Foursquare Places API endpoint in Swift."
-  system_prompt_template: "Use ../SKILL.md as the canonical workflow and consult only the needed docs in ../references. Generate Swift with async/await, URLSession, Codable, explicit CodingKeys, and standardized Foursquare error decoding."
+  system_prompt_template: "Use ../SKILL.md as the canonical workflow and consult only the needed docs in ../references."

@@ -1,59 +1,82 @@
 # Foursquare Swift Expert Skill
 
-A modular agent skill for implementing Foursquare Places API integrations in Swift.
+A modular Codex skill for implementing the [Foursquare Places API](https://docs.foursquare.com/fsq-developers-places/reference) in Swift.
 
-This repository contains a production-oriented skill at:
+This repository contains a production-oriented skill package focused on:
+- Swift `async/await` + `URLSession` request patterns
+- `Codable`, `Identifiable`, `Hashable` models with explicit `CodingKeys`
+- Endpoint-level parameter/header documentation
+- Response code coverage and JSON schema references
+- Standardized error handling via `FoursquareAPIError` and `FoursquareErrorResponse` (`error_detail` parsing)
 
-- `foursquare-swift-expert/`
+## What Is Included
 
-The skill is designed to help agents generate consistent Swift code using:
+- `foursquare-swift-expert/SKILL.md`: Main skill manifest and workflow instructions
+- `foursquare-swift-expert/agents/*.yaml`: Skill UI metadata
+- `foursquare-swift-expert/references/*.md`: Endpoint-specific implementation references and Swift examples
 
-- `async/await`
-- `URLSession`
-- `Codable`
-- explicit `CodingKeys` mappings (including `fsq_id -> id`)
-- standardized API error decoding
-
-## Skill Contents
+## Repository Structure
 
 ```text
-foursquare-swift-expert/
-├── SKILL.md
-├── agents/
-│   ├── openai.yaml
-│   ├── claude.yaml
-│   └── gemini.yaml
-└── references/
-    ├── core-data.md
-    ├── search-and-discovery.md
-    ├── place-content.md
-    ├── crowdsourcing.md
-    ├── suggest-and-status.md
-    └── geotagging.md
+codex-project/
+├── foursquare-swift-expert/
+│   ├── SKILL.md
+│   ├── agents/
+│   │   ├── claude.yaml
+│   │   ├── gemini.yaml
+│   │   └── openai.yaml
+│   └── references/
+│       ├── common-data.md
+│       ├── autocomplete.md
+│       ├── place-search.md
+│       ├── place-details.md
+│       ├── place-tips.md
+│       ├── place-photos.md
+│       ├── place-flag.md
+│       ├── suggest-merge-places.md
+│       ├── suggest-edit-place.md
+│       ├── suggest-remove-place.md
+│       ├── suggest-new-place.md
+│       ├── suggest-status.md
+│       ├── suggest-review.md
+│       ├── geotagging-candidates.md
+│       └── geotagging-confirm.md
+└── foursquare-skill-creation-prompt.md
 ```
 
-## What Each Reference Covers
+## Endpoints Covered
 
-- `core-data.md`
-  - Categories, Chains, response field mapping guidance
-- `search-and-discovery.md`
-  - Autocomplete, Place Search
-- `place-content.md`
-  - Place Details, Tips, Photos
-- `crowdsourcing.md`
-  - Suggest Merge, Suggest Edit, Suggest Remove, Flagging
-- `suggest-and-status.md`
-  - Suggest Place, Suggest Status
-- `geotagging.md`
-  - Geotagging candidates
+- Autocomplete
+- Place Search
+- Place Details
+- Place Tips
+- Place Photos
+- Flag a Place
+- Suggest Merge Places
+- Suggest Edit Place
+- Suggest Remove Place
+- Suggest New Place
+- Suggest Status
+- Suggest Review
+- Geotagging Candidates
+- Geotagging Confirm
+- Common data/reference fields (categories, chains, response fields)
 
-Each reference includes:
+## How To Use This Skill
 
-- required headers
-- path/query parameter documentation
-- JSON response schema examples
-- complete Swift endpoint functions
-- reusable error handling baseline (`FoursquareErrorResponse`, `FoursquareAPIError`)
+1. Open `foursquare-swift-expert/SKILL.md`.
+2. Identify the endpoint needed for your task.
+3. Open the matching file in `foursquare-swift-expert/references/`.
+4. Apply the documented path/query parameters, required headers (including `X-Places-Api-Version`), response-code/schema expectations, and Swift request/model/error-handling patterns.
+
+### Where to Save Skills
+
+Follow your tool’s official documentation, here are a few popular ones:
+- **Codex:** [Where to save skills](https://developers.openai.com/codex/skills/#where-to-save-skills)
+- **Claude:** [Using Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview#using-skills)
+- **Cursor:** [Enabling Skills](https://cursor.com/docs/context/skills#enabling-skills)
+- **Xcode:** [Setting up coding intelligence](https://developer.apple.com/documentation/xcode/setting-up-coding-intelligence)
+
 
 ## Validation
 
@@ -69,15 +92,21 @@ If validation fails with `ModuleNotFoundError: No module named 'yaml'`, install 
 ```bash
 python3 -m pip install --user pyyaml
 ```
+Expected output:
 
-## Usage
+```text
+Skill is valid!
+```
 
-1. Load the skill from `foursquare-swift-expert/SKILL.md`.
-2. Route endpoint work to the matching file in `foursquare-swift-expert/references/`.
-3. Reuse the provided Swift and error-handling patterns to keep integration consistent.
 
 ## Metadata Notes
 
 - `agents/openai.yaml` is OpenAI/Codex UI metadata.
 - `agents/claude.yaml` and `agents/gemini.yaml` are adapter manifests for cross-platform orchestration.
 - `SKILL.md` + `references/*` are the canonical, portable skill instructions.
+
+
+## Notes
+
+- Reference files were generated from official Foursquare documentation sources listed in each file.
+- API docs evolve over time; re-check versioned headers and schemas when upgrading API versions.

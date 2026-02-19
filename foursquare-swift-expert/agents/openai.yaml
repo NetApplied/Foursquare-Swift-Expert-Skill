@@ -1,4 +1,4 @@
 interface:
   display_name: "Foursquare Swift Expert"
-  short_description: "Swift-first Foursquare Places API integration guide"
-  default_prompt: "Use this skill to implement, debug, and document Foursquare Places API integrations in Swift using async/await, URLSession, and Codable."
+  short_description: "Swift guides for Foursquare Places API."
+  default_prompt: "Implement Foursquare Places API integration in Swift with async/await, URLSession, Codable models, and endpoint-specific error handling."

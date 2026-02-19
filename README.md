@@ -1,66 +1,51 @@
 # Foursquare Swift Expert Skill
 
-A modular Codex skill for implementing the [Foursquare Places API](https://docs.foursquare.com/fsq-developers-places/reference) in Swift.
+Swift-focused Codex skill for implementing the Foursquare Places API with production-ready patterns.
 
-This repository contains a production-oriented skill package focused on:
-- Swift `async/await` + `URLSession` request patterns
-- `Codable`, `Identifiable`, `Hashable` models with explicit `CodingKeys`
-- Endpoint-level parameter/header documentation
-- Response code coverage and JSON schema references
-- Standardized error handling via `FoursquareAPIError` and `FoursquareErrorResponse` (`error_detail` parsing)
+## Overview
 
-## What Is Included
+`foursquare-swift-expert` is a modular skill package that provides endpoint-level guidance and reusable Swift patterns for:
 
-- `foursquare-swift-expert/SKILL.md`: Main skill manifest and workflow instructions
-- `foursquare-swift-expert/agents/*.yaml`: Skill UI metadata
-- `foursquare-swift-expert/references/*.md`: Endpoint-specific implementation references and Swift examples
+- `async/await` networking with `URLSession`
+- strict `Codable` model design with explicit `CodingKeys`
+- consistent request construction with `URLComponents`
+- standardized API error handling (`error_detail` decoding for non-2xx responses)
+
+The skill is designed as a practical implementation reference for engineers building or maintaining Foursquare Places API integrations in Swift.
 
 ## Repository Structure
 
 ```text
-codex-project/
-├── foursquare-swift-expert/
-│   ├── SKILL.md
-│   ├── agents/
-│   │   ├── claude.yaml
-│   │   ├── gemini.yaml
-│   │   └── openai.yaml
-│   └── references/
-│       ├── common-data.md
-│       ├── autocomplete.md
-│       ├── place-search.md
-│       ├── place-details.md
-│       ├── place-tips.md
-│       ├── place-photos.md
-│       ├── place-flag.md
-│       ├── suggest-merge-places.md
-│       ├── suggest-edit-place.md
-│       ├── suggest-remove-place.md
-│       ├── suggest-new-place.md
-│       ├── suggest-status.md
-│       ├── suggest-review.md
-│       ├── geotagging-candidates.md
-│       └── geotagging-confirm.md
-└── foursquare-skill-creation-prompt.md
+foursquare-swift-expert/
+├── SKILL.md
+├── agents/
+│   ├── openai.yaml
+│   ├── claude.yaml
+│   └── gemini.yaml
+└── references/
+    ├── autocomplete.md
+    ├── place-search.md
+    ├── place-details.md
+    ├── place-flag.md
+    ├── geotagging-candidates.md
+    ├── shared-models.md
+    └── shared-error-handling.md
 ```
 
-## Endpoints Covered
+## Implemented Endpoints
 
 - Autocomplete
 - Place Search
 - Place Details
-- Place Tips
-- Place Photos
-- Flag a Place
-- Suggest Merge Places
-- Suggest Edit Place
-- Suggest Remove Place
-- Suggest New Place
-- Suggest Status
-- Suggest Review
-- Geotagging Candidates
-- Geotagging Confirm
-- Common data/reference fields (categories, chains, response fields)
+- Flag Place
+- Find Geotagging Candidates
+
+## Shared Building Blocks
+
+- `references/shared-models.md`
+  - shared base models such as `Place`, `Category`, `Location`, `Chain`, `Icon`, `SocialMedia`, and related geo models.
+- `references/shared-error-handling.md`
+  - centralized `FoursquareAPIError`, `FoursquareErrorResponse`, and non-2xx handling helper.
 
 ## How To Use This Skill
 
@@ -99,20 +84,22 @@ Skill is valid!
 ```
 
 
-### Where to Save Skills
-
-Follow your tool’s official documentation, here are a few popular ones:
-- **Codex:** [Where to save skills](https://developers.openai.com/codex/skills/#where-to-save-skills)
-- **Claude:** [Using Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview#using-skills)
-- **Cursor:** [Enabling Skills](https://cursor.com/docs/context/skills#enabling-skills)
-- **Xcode:** [Setting up coding intelligence](https://developer.apple.com/documentation/xcode/setting-up-coding-intelligence)
-
-
 ## Metadata Notes
 
 - `agents/openai.yaml` is OpenAI/Codex UI metadata.
-- `agents/claude.yaml` and `agents/gemini.yaml` are adapter manifests for cross-platform orchestration.
+- `agents/claude.yaml` and `agents/gemini.yaml` are provider-specific adapter manifests.
 - `SKILL.md` + `references/*` are the canonical, portable skill instructions.
+
+
+## Source Documentation
+
+Endpoint content is based on the official Foursquare Places API documentation:
+
+- [Autocomplete](https://docs.foursquare.com/fsq-developers-places/reference/autocomplete)
+- [Place Search](https://docs.foursquare.com/fsq-developers-places/reference/place-search)
+- [Place Details](https://docs.foursquare.com/fsq-developers-places/reference/place-details)
+- [Place Flag](https://docs.foursquare.com/fsq-developers-places/reference/place-flag)
+- [Geotagging Candidates](https://docs.foursquare.com/fsq-developers-places/reference/geotagging-candidates)
 
 
 ## Notes

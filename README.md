@@ -99,6 +99,15 @@ Skill is valid!
 ```
 
 
+### Where to Save Skills
+
+Follow your tool’s official documentation, here are a few popular ones:
+- **Codex:** [Where to save skills](https://developers.openai.com/codex/skills/#where-to-save-skills)
+- **Claude:** [Using Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview#using-skills)
+- **Cursor:** [Enabling Skills](https://cursor.com/docs/context/skills#enabling-skills)
+- **Xcode:** [Setting up coding intelligence](https://developer.apple.com/documentation/xcode/setting-up-coding-intelligence)
+
+
 ## Metadata Notes
 
 - `agents/openai.yaml` is OpenAI/Codex UI metadata.

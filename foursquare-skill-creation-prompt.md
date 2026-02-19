@@ -19,6 +19,24 @@ Every endpoint documentation must include a dedicated **Error Handling** section
 
 Only use documentation from the provided documentation-source for each resource. For Swift data models, use the schema from **example-json-response** given for each endpoint.
 
+For each resource in the references folder, ensure swift data models do not have a lot of repetitive code.  Provide a base set of models that represent the major foursquare response objects like:
+Place
+Category
+Location
+Icon
+Chain
+ExtendedLocation
+SocialMedia
+RelatedPlaces
+RelatedPlace
+Coordinate
+GeoCircle
+GeoBounds
+
+Centralize swift data models into the same shared reference file named `shared-models.md`
+
+Centralize the repeated error models (FoursquareAPIError, FoursquareErrorResponse) and helpers into the same shared reference file `shared-error-handling.md`.
+
 For Swift example code that performs requests follow this coding style:
 ```
 import Foundation
@@ -46,6 +64,12 @@ if let url = components.url {
     // Use request...
 }
 ```
+
+### Shared Swift Data Model Resource
+`shared-models.md`: Covers all shared Swift data models for Foursquare Places API 
+
+### Shared Swift Error Model Resource
+`shared-error-handling.md`: Covers all shared shared error models and helpers across all Foursquare endpoint integrations
 
 ### Autocomplete API Endpoint Resource
 `autocomplete.md`: Covers Autocomplete API endpoint
@@ -1793,5 +1817,7 @@ if let url = components.url {
 }
 ```
 
-## Output: Create the directory structure and all markdown files listed above.
-
+## Output: 
+* Create the directory structure and all markdown files listed above
+* Create provider-specific adapter manifest agent files in the `foursquare-swift-expert/agents` folder for `openai.yaml`, `gemini.yaml`, and `claude.yaml`
+* Create a `README.md` in the root project folder that summarizes this skill and is suitable for a Github repo README.md

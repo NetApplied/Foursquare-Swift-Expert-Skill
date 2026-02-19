@@ -1,0 +1,4 @@
+interface:
+  display_name: "Foursquare Swift Docs"
+  short_description: "Swift integration patterns for Foursquare Places API"
+  default_prompt: "Use $foursquare-swift-expert to implement or debug a Foursquare Places API endpoint in Swift."

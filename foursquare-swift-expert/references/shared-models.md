@@ -197,7 +197,7 @@ struct SocialMedia: Codable, Identifiable, Hashable {
 }
 
 struct RelatedPlaces: Codable, Identifiable, Hashable {
-    let parent: [RelatedPlace]?
+    let parent: RelatedPlace?
     let children: [RelatedPlace]?
 
     var id: Int { hashValue }
